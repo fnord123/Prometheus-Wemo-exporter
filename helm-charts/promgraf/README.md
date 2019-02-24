@@ -12,3 +12,13 @@ To upgrade:
 
 1. `helm dep update promgraf`
 2. `helm upgrade --recreate-pods promgraf promgraf`
+
+To connect to web UI:
+
+1. Prometheus will be on port 31300
+2. Grafana will be on port 30301. See password in values.yaml
+
+To backup the data:
+
+1. `curl -XPOST http://<local-machine-public-ip-address>:31301/api/v1/admin/tsdb/snapshot`
+2. Find the snapshot in `/var/prometheus/data/snapshots`, tarball it, and rm it.
