@@ -22,3 +22,18 @@ To backup the data:
 
 1. `curl -XPOST http://<local-machine-public-ip-address>:31301/api/v1/admin/tsdb/snapshot`
 2. Find the snapshot in `/var/prometheus/data/snapshots`, tarball it, and rm it.
+
+When things get messed up
+
+kubectl delete --all podsecuritypolicies
+kubectl delete --all pods
+kubectl delete --all secrets
+kubectl delete --all configmaps
+kubectl delete --all pv
+kubectl delete --all pvc
+kubectl patch pvc promgraf-prometheus-alertmanager -p '{"metadata":{"finalizers":null}}'
+kubectl patch pvc promgraf-prometheus-server -p '{"metadata":{"finalizers":null}}'
+kubectl delete --all daemonsets
+kubectl delete --all replicasets
+kubectl delete --all deployments
+kubectl delete --all serviceaccounts

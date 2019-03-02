@@ -1,21 +1,26 @@
 # prometheus snmp exporter
-#git clone https://github.com/prometheus/snmp_exporter.git
-#cd snmp_exporter
-#make
+# NOTE: didn't actually need this...
+git clone https://github.com/prometheus/snmp_exporter.git
+cd snmp_exporter
+make
 
-# Download some mibs?
-cd helm-charts
-mkdir files
-cd files
+# download the apc mibs
+# NOTE: didn't actually need this
 wget https://download.schneider-electric.com/files?p_File_Name=powernet426.mib
 mv "files?p_File_Name=powernet426.mib" powernet426.mib
 
-# build the snmp generator
+# Generate a custom snmp.yml that only includes what I want
 sudo apt-get install unzip
 go get github.com/prometheus/snmp_exporter/generator
 cd ${GOPATH-$HOME/go}/src/github.com/prometheus/snmp_exporter/generator
+emacs net_snmp.go
+  # comment out these three lines:
+  //      for k, v := range n.EnumValues {
+  //              neEnumValuesValues[k] = v
+  //      }
 go build
 make mibs
 export MIBDIRS=/home/smbaker/gowork/src/github.com/prometheus/snmp_exporter/generator/mibs
 cp ~/projects/pi/smbaker-infrastructure/snmp_stuff/generator.yml .
 ./generator generate
+cp snmp.yml ~/projects/pi/smbaker-infrastructure/helm-charts/promgraf/premetheus-snmp-exporter/files/

@@ -6,4 +6,7 @@ dependencies:
 #  version: 1.12.0
   version: 2.0.2
   repository: https://kubernetes-charts.storage.googleapis.com/
-
+- name: prometheus-snmp-exporter
+  version: 0.0.1
+  repository: file://./prometheus-snmp-exporter
+#  repository: https://kubernetes-charts.storage.googleapis.com/

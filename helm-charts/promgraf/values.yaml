@@ -63,3 +63,7 @@ grafana:
           url: http://promgraf-prometheus-server.default.svc.cluster.local
           access: proxy
           isDefault: true
+
+prometheus-snmp-exporter:
+  config: "bogus"
+
