@@ -34,3 +34,16 @@ metadata:
 data:
   power.json: |
 {{ .Files.Get "dashboards/Power-1551547391684.json" | indent 4 }}
+
+...
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-node
+  labels:
+    grafana_dashboard: "1"
+data:
+  node.json: |
+{{ .Files.Get "dashboards/Node-Exporter-Server-Metrics-1551556216606.json" | indent 4 }}
