@@ -1,0 +1,46 @@
+#!/bin/bash
+#
+# chkconfig: - 57 75
+# description: set the date and time via NTP
+
+. /etc/init.d/functions
+
+pidfile=/var/run/node-exportery.pid
+binary=/usr/sbin/node_exporter
+
+start() {
+	echo -n "Starting node-exporter: "
+        nohup $binary > /var/log/node-exporter 2>&1 &
+#        daemon --pidfile=$pidfile --user=node_exporter $binary
+	touch /var/lock/subsys/node-exporter
+	return 0
+}	
+
+stop() {
+	echo -n "Shutting down node-exporter: "
+	pkill -f node_exporter
+	rm -f /var/lock/subsys/node-exporter
+	return 0
+}
+
+case "$1" in
+    start)
+	start
+	;;
+    stop)
+	stop
+	;;
+    status)
+	;;
+    restart)
+    	stop
+	start
+	;;
+    reload)
+	;;
+    *)
+	echo "Usage: <servicename> {start|stop|status|reload|restart[|probe]"
+	exit 1
+	;;
+esac
+exit $?
