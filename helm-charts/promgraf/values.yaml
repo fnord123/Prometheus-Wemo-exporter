@@ -44,6 +44,21 @@ prometheus:
             - targets:
               - 198.0.0.246:8000
 
+        - job_name: 'ups_server'
+          static_configs:
+            - targets:
+              - 198.0.0.189
+          metrics_path: /snmp
+          params:
+            module: [smbaker_apcups]
+          relabel_configs:
+            - source_labels: [__address__]
+              target_label: __param_target
+            - source_labels: [__param_target]
+              target_label: instance
+            - target_label: __address__
+              replacement: promgraf-prometheus-snmp-exporter:9116
+
 grafana:
   adminUser: admin
   adminPassword: myadminpassword
@@ -66,4 +81,5 @@ grafana:
 
 prometheus-snmp-exporter:
   config: "bogus"
-
+  service:
+    type: NodePort
