@@ -1,0 +1,31 @@
+---
+
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "wemo_exporter.fullname" . }}
+  labels:
+    app: {{ template "wemo_exporter.name" . }}
+    chart: {{ template "wemo_exporter.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "wemo_exporter.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "wemo_exporter.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          args:
+               - "/usr/local/bin/python"
+               - "9801"
+               - "{{ .Values.wemo_ip }}"
+          image: {{ .Values.image.repository }}:{{ tpl .Values.image.tag . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}

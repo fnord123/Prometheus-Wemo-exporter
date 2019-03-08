@@ -1,0 +1,5 @@
+name: prometheus-wemo-exporter
+description: exports wemo metrics to prometheus
+version: 1.0.0
+
+appVersion: latest
