@@ -9,4 +9,7 @@ dependencies:
 - name: prometheus-snmp-exporter
   version: 0.0.1
   repository: file://./prometheus-snmp-exporter
-#  repository: https://kubernetes-charts.storage.googleapis.com/
+- name: prometheus-wemo-exporter
+  version: 1.0.0
+  repository: file://./prometheus-wemo-exporter
+

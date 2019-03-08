@@ -44,6 +44,14 @@ prometheus:
             - targets:
               - 198.0.0.246:8000
 
+        # wemo
+        - job_name: 'wemo'
+          metrics_path: /metrics
+          scrape_interval: 10s
+          static_configs:
+            - targets:
+              - promgraf-prometheus-wemo-exporter:9801
+
         - job_name: 'ups_server'
           static_configs:
             - targets:
