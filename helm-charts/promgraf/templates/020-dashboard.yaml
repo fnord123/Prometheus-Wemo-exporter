@@ -20,7 +20,7 @@ metadata:
     grafana_dashboard: "1"
 data:
   3dprinter.json: |
-{{ .Files.Get "dashboards/3D-Printer-1550976435297.json" | indent 4 }}
+{{ .Files.Get "dashboards/3D-Printer-1552108223170.json" | indent 4 }}
 
 ...
 ---
