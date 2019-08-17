@@ -1,4 +1,8 @@
 prometheus:
+  pushgateway:
+    service:
+      type: NodePort
+      nodePort: 31302
   alertmanager:
     persistentVolume:
       enabled: true
@@ -7,6 +11,7 @@ prometheus:
     persistentVolume:
       enabled: true
       storageClass: manual-prom
+    retention: 5y
     service:
       type: NodePort
       nodePort: 31301
