@@ -1,8 +1,8 @@
 prometheus:
-  pushgateway:
-    service:
-      type: NodePort
-      nodePort: 31302
+#  pushgateway:
+#    service:
+#      type: NodePort
+#      nodePort: 31302
   alertmanager:
     persistentVolume:
       enabled: true
