@@ -47,7 +47,7 @@ prometheus:
           scrape_interval: 10s
           static_configs:
             - targets:
-              - 198.0.0.246:8000
+              - 198.0.0.252:8000
 
         # wemo
         - job_name: 'wemo'
@@ -72,11 +72,20 @@ prometheus:
             - target_label: __address__
               replacement: promgraf-prometheus-snmp-exporter:9116
 
+        # Server metrics from the fileserver        
         - job_name: 'node_exporter'
           static_configs:
             - targets:
               - 198.0.0.106:9100
           metrics_path: /metrics
+
+        # BME280 sensors watched by rtl-sdr
+        - job_name: 'bmesensors'
+          metrics_path: /metrics
+          scrape_interval: 10s
+          static_configs:
+            - targets:
+              - 198.0.0.251:8000
 
 grafana:
   adminUser: admin

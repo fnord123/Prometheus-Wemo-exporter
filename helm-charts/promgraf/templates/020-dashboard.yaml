@@ -47,3 +47,16 @@ metadata:
 data:
   node.json: |
 {{ .Files.Get "dashboards/Node-Exporter-Server-Metrics-1551556216606.json" | indent 4 }}
+
+...
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-bmesensors
+  labels:
+    grafana_dashboard: "1"
+data:
+  node.json: |
+{{ .Files.Get "dashboards/BME-Sensors-1567234382101.json" | indent 4 }}
