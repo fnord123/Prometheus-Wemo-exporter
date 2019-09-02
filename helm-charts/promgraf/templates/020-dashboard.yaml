@@ -59,4 +59,4 @@ metadata:
     grafana_dashboard: "1"
 data:
   node.json: |
-{{ .Files.Get "dashboards/BME-Sensors-1567234382101.json" | indent 4 }}
+{{ .Files.Get "dashboards/BME-Sensors-1567391469298.json" | indent 4 }}
