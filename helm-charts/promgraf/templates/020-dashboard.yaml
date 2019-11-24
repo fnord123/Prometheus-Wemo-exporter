@@ -60,3 +60,16 @@ metadata:
 data:
   node.json: |
 {{ .Files.Get "dashboards/BME-Sensors-1567391469298.json" | indent 4 }}
+
+...
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-synology
+  labels:
+    grafana_dashboard: "1"
+data:
+  node.json: |
+{{ .Files.Get "dashboards/Synology-11232019.json" | indent 4 }}

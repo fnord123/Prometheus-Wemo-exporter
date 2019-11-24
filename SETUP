@@ -9,7 +9,14 @@ make
 wget https://download.schneider-electric.com/files?p_File_Name=powernet426.mib
 mv "files?p_File_Name=powernet426.mib" powernet426.mib
 
+# Generator a custom snmp.yml
+# RUN INSTRUCTIONS
+# run this from smbaker-work as it has dependency libraries installed
+cd snmp_stuff
+bash ./update.sh
+
 # Generate a custom snmp.yml that only includes what I want
+# BUILD INSTRUCTIONS --- FOLLOW THE RUN INSTRUCTIONS INSTEAD
 sudo apt-get install unzip
 go get github.com/prometheus/snmp_exporter/generator
 cd ${GOPATH-$HOME/go}/src/github.com/prometheus/snmp_exporter/generator

@@ -72,6 +72,21 @@ prometheus:
             - target_label: __address__
               replacement: promgraf-prometheus-snmp-exporter:9116
 
+        - job_name: 'synology'
+          static_configs:
+            - targets:
+              - 198.0.0.107
+          metrics_path: /snmp
+          params:
+            module: [synology]
+          relabel_configs:
+            - source_labels: [__address__]
+              target_label: __param_target
+            - source_labels: [__param_target]
+              target_label: instance
+            - target_label: __address__
+              replacement: promgraf-prometheus-snmp-exporter:9116
+
         # Server metrics from the fileserver        
         - job_name: 'node_exporter'
           static_configs:
