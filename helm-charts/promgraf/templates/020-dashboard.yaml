@@ -58,7 +58,7 @@ metadata:
   labels:
     grafana_dashboard: "1"
 data:
-  node.json: |
+  bmesensors.json: |
 {{ .Files.Get "dashboards/BME-Sensors-1567391469298.json" | indent 4 }}
 
 ...
@@ -71,5 +71,5 @@ metadata:
   labels:
     grafana_dashboard: "1"
 data:
-  node.json: |
+  synology.json: |
 {{ .Files.Get "dashboards/Synology-11232019.json" | indent 4 }}
