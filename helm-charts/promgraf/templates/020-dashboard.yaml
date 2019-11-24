@@ -72,4 +72,4 @@ metadata:
     grafana_dashboard: "1"
 data:
   synology.json: |
-{{ .Files.Get "dashboards/Synology-11232019.json" | indent 4 }}
+{{ .Files.Get "dashboards/Synology-SNMP-DashBoard-1574583331072.json" | indent 4 }}
