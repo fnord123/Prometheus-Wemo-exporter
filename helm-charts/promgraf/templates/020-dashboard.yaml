@@ -43,7 +43,7 @@ kind: ConfigMap
 metadata:
   name: grafana-dashboard-node
   labels:
-    grafana_dashboard: "1"
+    disabled-grafana_dashboard: "1"
 data:
   node.json: |
 {{ .Files.Get "dashboards/Node-Exporter-Server-Metrics-1551556216606.json" | indent 4 }}
@@ -59,7 +59,7 @@ metadata:
     grafana_dashboard: "1"
 data:
   bmesensors.json: |
-{{ .Files.Get "dashboards/BME-Sensors-1567391469298.json" | indent 4 }}
+{{ .Files.Get "dashboards/BME-Sensors-1574580446176.json" | indent 4 }}
 
 ...
 ---
