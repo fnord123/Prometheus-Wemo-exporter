@@ -2,9 +2,7 @@ dependencies:
 - name: prometheus
   version: 8.8.1
   repository: https://kubernetes-charts.storage.googleapis.com/
-#  repository: file://./prometheus-chart-8.8.1
 - name: grafana
-#  version: 1.12.0
   version: 2.0.2
   repository: https://kubernetes-charts.storage.googleapis.com/
 - name: prometheus-snmp-exporter
@@ -13,4 +11,6 @@ dependencies:
 - name: prometheus-wemo-exporter
   version: 1.0.0
   repository: file://./prometheus-wemo-exporter
-
+- name: prometheus-blackbox-exporter
+  version: 4.1.1
+  repository: https://kubernetes-charts.storage.googleapis.com/

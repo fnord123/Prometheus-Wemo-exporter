@@ -102,6 +102,25 @@ prometheus:
             - targets:
               - 198.0.0.251:8000
 
+        # website monitoring
+        - job_name: 'blackbox'
+          metrics_path: /probe
+          params:
+            module: [http_2xx]
+          static_configs:
+            - targets:
+              - http://www.smbaker.com
+              - https://www.smbaker.com
+              - http://www.forpilots.com
+              - https://www.forpilots.com
+          relabel_configs:
+            - source_labels: [__address__]
+              target_label: __param_target
+            - source_labels: [__param_target]
+              target_label: instance
+            - target_label: __address__
+              replacement: promgraf-prometheus-blackbox-exporter:9115
+
 grafana:
   adminUser: admin
   adminPassword: myadminpassword
