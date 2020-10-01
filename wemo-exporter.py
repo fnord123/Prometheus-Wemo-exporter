@@ -1,9 +1,7 @@
 # Prometheus Wemo Exporter
 #
-# Scott Baker
-# http://www.smbaker.com/
+# David Putzolu, based on code by Scott Baker(http://www.smbaker.com/)
 
-#from prometheus_client import start_http_server, Metric, REGISTRY
 from prometheus_client import start_http_server, Gauge
 import requests
 import pywemo
@@ -71,7 +69,6 @@ class wemoPrometheusExporter:
         , default=False
         , help="Enable verbose debug outputs"
         )
-
     self._args = parser.parse_args()
     print(self._args)
 
