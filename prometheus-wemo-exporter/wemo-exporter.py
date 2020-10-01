@@ -55,9 +55,10 @@ class wemoPrometheusExporter:
         )
     parser.add_argument\
         ( '--port'
-        , required=True
+        , required=False
         , env_var="EXPORTER_PORT"
         , type=int
+        , default=8000
         , const=True
         , nargs="?"
         , help="Port number the exporter should bind to"
@@ -97,7 +98,7 @@ class wemoPrometheusExporter:
     self._power = \
       Gauge('power', 'Instantaneous power consumption', ['device'])
     start_http_server(self._args.port)
-    
+
     while True:
       self.collect()
       sleep(self._args.interval)
